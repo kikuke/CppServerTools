@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "/usr/bin/make",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+            "options": {
+                "cwd": "/home/kikuke/DV/CppServerTools/Makefile"
+            }
+		}
+	]
+}
