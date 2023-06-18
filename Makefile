@@ -1,6 +1,6 @@
-INCLUDE = -Isocket/ -Iepoll/ -Istruct/ -Ilog/
-SUBDIRS = file socket epoll struct log
-MODULE = file/file.o socket/socket.o epoll/epoll.o struct/RingBuffer.o log/Logger.o
+INCLUDE = -Isocket/ -Ipacket -Iepoll/ -Istruct/ -Ilog/
+SUBDIRS = file socket packet epoll struct log
+MODULE = file/file.o socket/socket.o packet/BasePacket.o epoll/epoll.o struct/RingBuffer.o log/Logger.o
 RESULT = main
 CC = g++ -g
 

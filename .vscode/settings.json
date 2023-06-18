@@ -8,5 +8,8 @@
             "name": "Print make version",
             "makeArgs": ["--version"]
         }
-    ]
+    ],
+    "files.associations": {
+        "string.h": "c"
+    }
    }
