@@ -1,6 +1,6 @@
-INCLUDE = -Ilog/ -Istruct/
-SUBDIRS = file struct log
-MODULE = file/file.o struct/RingBuffer.o log/Logger.o
+INCLUDE = -Isocket/ -Istruct/ -Ilog/
+SUBDIRS = file socket struct log
+MODULE = file/file.o socket/socket.o struct/RingBuffer.o log/Logger.o
 RESULT = main
 CC = g++ -g
 
