@@ -1,4 +1,4 @@
-INCLUDE = -Isocket/ -Ipacket/basepacket -Iepoll/ -Istruct/ -Ilog/
+INCLUDE = -Isocket/ -Istruct/ -Iepoll/ -Ipacket/basepacket -Ilog/
 SUBDIRS = file socket packet epoll struct log
 MODULE = file/file.o socket/socket.o packet/basepacket/BasePacket.o epoll/epoll.o struct/RingBuffer.o log/Logger.o packet/basepacket/BasePacketManager.o
 RESULT = main

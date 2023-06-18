@@ -96,21 +96,6 @@ RingBuffer& RingBuffer::operator >>(RingBuffer& data)
     return *this;
 }
 
-template <typename T>
-RingBuffer& RingBuffer::operator <<(T const& data) {
-    enqueue(&data, sizeof(data));
-
-    return *this;
-}
-
-
-template <typename T>
-RingBuffer& RingBuffer::operator >>(T & data) {
-    dequeue(&data, sizeof(data));
-
-    return *this;
-}
-
 size_t RingBuffer::getNotBrokenGetSize()
 {
     if(rear >= front)

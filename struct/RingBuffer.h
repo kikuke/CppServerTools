@@ -43,10 +43,21 @@ public:
 
     RingBuffer& operator <<(RingBuffer& data);
     RingBuffer& operator >>(RingBuffer& data);
+    
     template <typename T>
-    RingBuffer& operator <<(T const& data);
+    RingBuffer& operator <<(T const& data) {
+        enqueue(&data, sizeof(data));
+
+        return *this;
+    }
+
     template <typename T>
-    RingBuffer& operator >>(T & data);
+    RingBuffer& operator >>(T & data) {
+        dequeue(&data, sizeof(data));
+
+        return *this;
+    }
+
 };
 
 #endif

@@ -1,4 +1,4 @@
-INCLUDE = -I../../struct
+INCLUDE = -I../../struct/ -I../../log/
 MAKE_BASE_PACKET = BasePacket.o BasePacketManager.o
 CC = g++ -g
 

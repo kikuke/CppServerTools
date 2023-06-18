@@ -1,4 +1,5 @@
 MAKE_PACKET =
+SUBDIRS = basepacket
 CC = g++ -g
 
 #Init
