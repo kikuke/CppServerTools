@@ -1,16 +1,14 @@
-INCLUDE = -Isocket/ -Istruct/ -Iepoll/ -Ipacket/basepacket -Ilog/
 SUBDIRS = file socket packet epoll struct log
 MODULE = file/file.o socket/socket.o packet/basepacket/BasePacket.o epoll/epoll.o struct/RingBuffer.o log/Logger.o packet/basepacket/BasePacketManager.o
-RESULT = main
-CC = g++ -g
+RESULT = kikuke_server_tools.a
 
 
 #Init
-init: create_main
+init: create_archive
 
 
 #Operation
-create_main:
+create_archive:
 	for DIR in $(SUBDIRS); do \
 		$(MAKE) -C $$DIR; \
 	done
@@ -25,10 +23,6 @@ clean:
 
 
 #Main File
-main: main.o $(MODULE)
-	$(CC) -o $@ $^
-
-
-#Application
-main.o: main.cpp
-	$(CC) $(INCLUDE) -c $^
+$(RESULT): $(MODULE)
+	ar ru $@ $^
+	ranlib $@
