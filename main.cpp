@@ -6,6 +6,7 @@
 #include "BasePacket.h"
 #include "RingBuffer.h"
 #include "Logger.h"
+#include "BasePacketManager.h"
 
 #define SERV_ADDR INADDR_ANY
 #define SERV_PORT 1234
@@ -26,6 +27,7 @@ int main(void)
     BASE_PACKET_TRAILER trailer = {
         TCP_PACKET_END_CODE
     };
+    BasePacketManager packetManager(NULL, 0, "", "");
 
     GetnerateBasePacket(buf, &header, msg, &trailer);
 

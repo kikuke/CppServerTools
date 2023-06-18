@@ -2,7 +2,7 @@
 #include "BasePacket.h"
 
 void *GetnerateBasePacket(void *packet, const BASE_PACKET_HEADER *header, const void *payload, const BASE_PACKET_TRAILER *trailer) {
-    void *packetAddr = packet;
+    unsigned char *packetAddr = (unsigned char *)packet;
 
     memcpy(packetAddr, header, sizeof(*header));
     packetAddr += sizeof(*header);
