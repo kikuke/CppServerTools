@@ -31,7 +31,7 @@ int BasePacketManager::execute(int sock, RingBuffer& buffer)
     size_t useSz = buffer.getUseSize();
 
     if((sizeof(BASE_PACKET_HEADER) + sizeof(BASE_PACKET_TRAILER)) > useSz)
-        return 0;
+        return -1;
 
     buffer.peek(&header, sizeof(BASE_PACKET_HEADER));
 
@@ -44,7 +44,7 @@ int BasePacketManager::execute(int sock, RingBuffer& buffer)
     //packet size check
     if(useSz < packet_size){
         logger.Log(LOGLEVEL::DEBUG, "Not Full Size Packet");
-        return 0;
+        return -1;
     }
     buffer >> header;
 
