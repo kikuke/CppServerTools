@@ -40,7 +40,9 @@ public:
         return mainOp;
     }
 
+    //success return 0 else return error code
     virtual int execute(int sock, unsigned int subOp, RingBuffer& buffer) = 0;
+    //success return 0 else return error code
     virtual int catchError(int sock, unsigned int errorCode) = 0;
 };
 
