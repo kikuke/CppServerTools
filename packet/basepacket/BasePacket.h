@@ -8,7 +8,7 @@ extern "C" {
 #include "BasePacketDefine.h"
 
 //return packet addr
-void *GetnerateBasePacket(void *packet, const BASE_PACKET_HEADER *header, const void *payload, const BASE_PACKET_TRAILER *trailer);
+size_t GetnerateBasePacket(void *packet, const BASE_PACKET_HEADER *header, const void *payload, const BASE_PACKET_TRAILER *trailer);
 
 #ifdef __cplusplus
 }
