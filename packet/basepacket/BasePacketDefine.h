@@ -9,20 +9,18 @@ extern "C" {
 #define TCP_PACKET_END_CODE 0x33
 
 typedef struct BasePacketHeader {
-    unsigned int startCode : 8;
-    unsigned int payloadLen : 16; // 3Byte
+    unsigned int startCode;
+    unsigned int payloadLen;
 
-    unsigned int mainOp : 4;
-    unsigned int : 4;
-    unsigned int subOp : 8; // 2Byte
+    unsigned int mainOp;
+    unsigned int subOp;
 
-    unsigned int flag : 12;
-    unsigned int auth : 12; // 3Byte
-} BASE_PACKET_HEADER; // 8Byte
+    unsigned int flag;
+    unsigned int auth;
+} BASE_PACKET_HEADER;
 
 typedef struct BasePacketTrailer {
-    unsigned int endCode : 8;
-    unsigned int : 24;
+    unsigned int endCode;
 } BASE_PACKET_TRAILER;
 
 #ifdef __cplusplus
