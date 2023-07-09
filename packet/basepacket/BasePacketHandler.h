@@ -1,7 +1,7 @@
 #ifndef BASE_PACKET_HANDLER
 #define BASE_PACKET_HANDLER
 
-#include "BasePacket.h"
+#include "BasePacketDefine.h"
 #include "RingBuffer.h"
 
 class BasePacketHandler
@@ -20,13 +20,23 @@ private:
 protected:
     //abstract data, return data
     //  if failed return NULL
+    int UnpackData(RingBuffer& buffer) {
+        BASE_PACKET_TRAILER trailer;
+        buffer >> trailer;
+
+        if (CheckTrailer(trailer) < 0)
+            return -1;
+
+        return 0;
+    }
+    
+    //abstract data, return data
+    //  if failed return NULL
     template <typename T>
-    int UnpackData(RingBuffer& buffer, T* data) {
+    int UnpackData(RingBuffer& buffer, T& data) {
         BASE_PACKET_TRAILER trailer;
 
-        if(data != NULL) {
-            buffer >> *data;
-        }
+        buffer >> data;
         buffer >> trailer;
 
         if (CheckTrailer(trailer) < 0)
