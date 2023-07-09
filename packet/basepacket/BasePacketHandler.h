@@ -21,10 +21,12 @@ protected:
     //abstract data, return data
     //  if failed return NULL
     template <typename T>
-    int UnpackData(RingBuffer& buffer, T& data) {
+    int UnpackData(RingBuffer& buffer, T* data) {
         BASE_PACKET_TRAILER trailer;
 
-        buffer >> data;
+        if(data != NULL) {
+            buffer >> *data;
+        }
         buffer >> trailer;
 
         if (CheckTrailer(trailer) < 0)
