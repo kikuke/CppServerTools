@@ -3,8 +3,8 @@
 int BasePacketManager::ExecuteOp(int sock, RingBuffer& buffer, unsigned int mainOp, unsigned int subOp)
 {
     for(int i=0; i<handler_size; i++){
-        if((*(handlers[i])).getMainOp() == mainOp)
-            return (*(handlers[i])).execute(sock, subOp, buffer);
+        if(handlers[i]->getMainOp() == mainOp)
+            return handlers[i]->execute(sock, subOp, buffer);
     }
 
     logger.Log(LOGLEVEL::ERROR, "ExecuteOp() - Undefined MainOp: %d", mainOp);
@@ -14,8 +14,8 @@ int BasePacketManager::ExecuteOp(int sock, RingBuffer& buffer, unsigned int main
 int BasePacketManager::CatchError(int sock, unsigned int mainOp, unsigned int errorCode)
 {
     for(int i=0; i<handler_size; i++){
-        if((*(handlers[i])).getMainOp() == mainOp)
-            return (*(handlers[i])).catchError(sock, errorCode);
+        if(handlers[i]->getMainOp() == mainOp)
+            return handlers[i]->catchError(sock, errorCode);
     }
 
     logger.Log(LOGLEVEL::ERROR, "CatchError() - Undefined MainOp: %d", mainOp);
