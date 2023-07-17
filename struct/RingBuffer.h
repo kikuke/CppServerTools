@@ -30,7 +30,7 @@ private:
 public:
     RingBuffer();
     RingBuffer(int buf_sz);
-    ~RingBuffer();
+    virtual ~RingBuffer();
 
     virtual size_t getUseSize();
 
